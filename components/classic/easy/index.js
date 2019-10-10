@@ -1,4 +1,4 @@
-// components/classic/movie/index.js
+// components/classic/easy/index.js
 import {
   classicBehavior
 } from '../classic-behavior'

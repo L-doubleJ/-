@@ -1,4 +1,4 @@
-// components/classic/movie/index.js
+// components/classic/music/index.js
 import {
   classicBehavior
 } from '../classic-behavior'
@@ -14,7 +14,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    pauseSrc: 'images/player@pause.png',
+    playSrc: 'images/player@play.png'
   },
 
   /**

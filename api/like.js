@@ -1,4 +1,6 @@
-import { HTTP } from '../utils/http';
+import {
+  HTTP
+} from '../utils/http';
 
 export class LikeApi extends HTTP {
   like(behavior, artID, category) {
@@ -10,7 +12,14 @@ export class LikeApi extends HTTP {
         art_id: artID,
         type: category
       },
-      success: function(res) {}
+      success: function (res) {}
+    });
+  }
+
+  getClassLikeStatus(artID, category, callback) {
+    this.request({
+      url: '/classic/' + category + '/' + artID + '/favor',
+      success: callback
     });
   }
 }

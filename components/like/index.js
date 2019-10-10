@@ -36,7 +36,9 @@ Component({
         like
       });
       let behavior = this.properties.like ? 'like' : 'cancle';
-      this.triggerEvent('like', { behavior }, {});
+      this.triggerEvent('like', {
+        behavior
+      }, {});
     }
   }
 });
