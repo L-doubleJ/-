@@ -2,7 +2,7 @@ import {
   HTTP
 } from '../utils/http';
 
-export class LikeApi extends HTTP {
+export class LikeModel extends HTTP {
   like(behavior, artID, category) {
     let url = behavior == 'like' ? '/like' : '/like/cancel';
     this.request({

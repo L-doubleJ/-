@@ -3,10 +3,10 @@ import {
   ClassiModel
 } from '../../api/classic';
 import {
-  LikeApi
+  LikeModel
 } from '../../api/like';
 let classiModel = new ClassiModel();
-let likeApi = new LikeApi();
+let likeModel = new LikeModel();
 Page({
   /**
    * 页面的初始数据
@@ -14,7 +14,9 @@ Page({
   data: {
     classic: {},
     latest: true,
-    first: false
+    first: false,
+    likeCount: 0,
+    likeStatus: false
   },
 
   /**
@@ -23,14 +25,16 @@ Page({
   onLoad: function (options) {
     classiModel.getLatest(res => {
       this.setData({
-        classic: res
+        classic: res,
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       });
     });
   },
 
   onLike(e) {
     let behavior = e.detail.behavior;
-    likeApi.like(behavior, this.data.classic.id, this.data.classic.type);
+    likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
   },
   onNext(e) {
     this._updateClassic('next');
@@ -40,11 +44,20 @@ Page({
   },
   _updateClassic(type) {
     let index = this.data.classic.index;
-    classiModel.getClassic(index, type, (res) => {
+    classiModel.getClassic(index, type, res => {
+      this._getLikeStatus(res.id, res.type);
       this.setData({
         classic: res,
         latest: classiModel.isLatest(res.index),
         first: classiModel.ifFirst(res.index)
+      });
+    });
+  },
+  _getLikeStatus(artID, category) {
+    likeModel.getClassLikeStatus(artID, category, res => {
+      this.setData({
+        likeCount: res.data.fav_nums,
+        likeStatus: res.data.like_status
       });
     });
   },
