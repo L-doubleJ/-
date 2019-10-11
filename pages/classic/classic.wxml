@@ -5,8 +5,7 @@
         <v-like like="{{likeStatus}}" class="like" bind:like="onLike" count="{{likeCount}}" />
     </view>
     <v-movie wx:if="{{classic.type == 100}}" img="{{classic.image}}" content="{{classic.content}}"></v-movie>
-    <v-music wx:if="{{classic.type == 200}}" img="{{classic.image}}" content="{{classic.content}}"></v-music>
+    <v-music wx:if="{{classic.type == 200}}" title="{{classic.title}}" src="{{classic.url}}" img="{{classic.image}}" content="{{classic.content}}"></v-music>
     <v-easy wx:if="{{classic.type == 300}}" img="{{classic.image}}" content="{{classic.content}}"></v-easy>
-    <v-navi class="navi" bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}"
-        latest="{{latest}}" />
+    <v-navi class="navi" bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" />
 </view>

@@ -1,7 +1,6 @@
 import {
     HTTP
 } from '../utils/http';
-
 export class ClassiModel extends HTTP {
     getLatest(callBack) {
         this.request({
