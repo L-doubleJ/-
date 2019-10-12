@@ -1,26 +1,18 @@
-// pages/book/book.js
-import {
-  Book
-} from '../../api/book';
-const book = new Book();
+// pages/book-detail/book-detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    books: []
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    book.getHotList().then(res => {
-      this.setData({
-        books: res.data
-      });
-    });
+
   },
 
   /**

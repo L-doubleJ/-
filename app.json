@@ -1,5 +1,10 @@
 {
-  "pages": ["pages/classic/classic", "pages/book/book", "pages/my/my"],
+  "pages": [
+    "pages/classic/classic",
+    "pages/book/book",
+    "pages/my/my",
+    "pages/book-detail/book-detail"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -7,7 +12,9 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "requiredBackgroundModes": ["audio"],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "tabBar": {
     "color": "#cccccc",
     "selectedColor": "#000000",
