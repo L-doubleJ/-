@@ -1,18 +1,44 @@
 // pages/book-detail/book-detail.js
+import {
+  Book
+} from '../../api/book';
+const bookModel = new Book();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    comments: [],
+    detail: {},
+    likeStatus: false,
+    likeCount: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const bid = options.bid;
+    const detail = bookModel.getDetail(bid);
+    const comments = bookModel.getComments(bid);
+    const likeStatus = bookModel.getLikeStatus(bid);
+    detail.then(res => {
+      this.setData({
+        book: res.data
+      });
+    });
+    comments.then(res => {
+      this.setData({
+        comments: res.data.comments
+      });
+    });
+    likeStatus.then(res => {
+      this.setData({
+        likeStatus: res.data.like_status,
+        likeCount: res.data.fav_nums
+      });
+    });
   },
 
   /**
