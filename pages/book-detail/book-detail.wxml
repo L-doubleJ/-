@@ -55,11 +55,11 @@
     </view>
     <view class="comment-container">
         <block wx:for="{{util.limit(comments,3)}}" wx:key="{{item.content}}">
-            <v-tag tag-class="{{index==0?'ex-tag1':'' || index==1?'ex-tag2':''}}" text="{{item.content}}">
+            <v-tag bind:tapping="onPost" tag-class="{{index==0?'ex-tag1':'' || index==1?'ex-tag2':''}}" text="{{item.content}}">
                 <text slot="after" class="num">{{'+'+item.nums}}</text>
             </v-tag>
         </block>
     </view>
-    <input class="post" placeholder="短评最多12个字" focus="{{true}}" />
+    <input bindconfirm="onPost" class="post" placeholder="短评最多12个字" focus="{{true}}" />
 </view>
 <v-mask wx:if="{{posting}}" bind:tap="onCancle" />
