@@ -2,7 +2,11 @@
 import {
   Book
 } from '../../api/book';
+import {
+  LikeModel
+} from '../../api/like';
 const bookModel = new Book();
+const likeModel = new LikeModel();
 Page({
 
   /**
@@ -12,7 +16,8 @@ Page({
     comments: [],
     detail: {},
     likeStatus: false,
-    likeCount: 0
+    likeCount: 0,
+    posting: false
   },
 
   /**
@@ -41,6 +46,20 @@ Page({
     });
   },
 
+  onLike(e) {
+    const like_or_cancle = e.detail.behavior;
+    likeModel.like(like_or_cancle, this.data.book.id, 400);
+  },
+  onFakePost() {
+    this.setData({
+      posting: true
+    });
+  },
+  onCancle() {
+    this.setData({
+      posting: false
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
